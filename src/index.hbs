@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="row main-tool-bar">
+        <div>
+          <form class="bs-example bs-example-form" role="form">
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="请输入关键词" id="key" value="{{data.pageInfo.key}}" />
+                  <input type="hidden" name="currentPage" value="{{data.pageInfo.currentPage}}" />
+                  <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="Go">Go!</button>
+                    </span>
+                </div>
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
+            <!-- /.row -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="page-bar">
+    <span class="page-number">{{data.pageInfo.totalCount}}</span> 条记录， 共<span class="page-number">{{data.pageInfo.pages}}</span> 页， 当前第<span class="current-page">{{data.pageInfo.currentPage}}</span>页，每页<span class="page-number">{{data.pageInfo.size}}</span>条
+    <button type="button" class="btn btn-success btn-xs" onclick="prevPage({{data.pageInfo.currentPage}}, '{{data.pageInfo.key}}')">上一页</button>
+    <button type="button" class="btn btn-success btn-xs" onclick="nextPage({{data.pageInfo.currentPage}}, '{{data.pageInfo.key}}')">下一页</button>
+  </div>
+
+  <table class="table table-bordered table-hover table-striped " width="100%">
+    <thead class="thead-light">
+      <tr>
+        <th width="248px">公司名称</th>
+        <th width="80px">公司类别</th>
+        <th width="80px">注册资本</th>
+        <th width="100px">企业人数</th>
+        <th>主营业务</th>
+        <th width="60px">邮件</th>
+        <th width="60px">电话</th>
+        <th width="60px">网址</th>
+        <th width="80px">目标客户</th>
+        <th width="40px">详情</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data.data}}
+        <tr>
+          <td>{{nameCN}}</td>
+          <td>{{compType}}</td>
+          <td>{{exhFund}}</td>
+          <td>{{staffs}}</td>
+          <td>{{keyword}}</td>
+          <td align="center">
+            {{#checkEmail email}}
+              <i class="glyphicon glyphicon-envelope"></i>
+              {{else}}
+                -
+            {{/checkEmail}}
+          </td>
+          <td align="center">
+            {{#checkEmail phone}}
+              <i class="glyphicon glyphicon-phone-alt"></i>
+              {{else}}
+                -
+            {{/checkEmail}}
+          </td>
+          <td align="center">
+            {{#checkWebsite website}}
+              -
+              {{else}}
+                <i class="glyphicon glyphicon-globe"></i>
+            {{/checkWebsite}}
+          </td>
+          <td align="center">
+            {{#checkTarget isTarget}}
+              -
+              {{else}}
+                <i class="glyphicon glyphicon-ok-circle"></i>
+            {{/checkTarget}}
+          </td>
+          <td><button type="button" class="btn btn-primary btn-xs" onclick="goCo('{{id}}')">详情</button></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <div class="page-bar">
+    <span class="page-number">{{data.pageInfo.totalCount}}</span> 条记录， 共<span class="page-number">{{data.pageInfo.pages}}</span> 页， 当前第<span class="current-page">{{data.pageInfo.currentPage}}</span>页，每页<span class="page-number">{{data.pageInfo.size}}</span>条
+    <button type="button" class="btn btn-success btn-xs" onclick="prevPage({{data.pageInfo.currentPage}}, '{{data.pageInfo.key}}')">上一页</button>
+    <button type="button" class="btn btn-success btn-xs" onclick="nextPage({{data.pageInfo.currentPage}}, '{{data.pageInfo.key}}')">下一页</button>
+  </div>
+</div>
+
+
+{{js "/js/home.js"}}

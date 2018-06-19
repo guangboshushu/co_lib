@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{title}}</title>
+  <html xmlns:wb="http://open.weibo.com/wb">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+  {{js "/js/bootstrap.min.js"}} {{js "/js/jquery.js"}}
+
+  {{css "/css/bootstrap.css"}} {{css "/css/index.css"}}
+
+  {{#each cssList}}
+    <link rel='stylesheet' href= {{this}} />
+  {{/each}}
+  {{> resource}}
+</head>
+
+<body>
+
+  {{> header}} {{{body}}} {{> footer}}
+  {{#each jsList}}
+    <script src= {{this}}></script>
+  {{/each}}
+</body>
+
+</html>

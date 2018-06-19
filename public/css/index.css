@@ -1,0 +1,58 @@
+body {
+  color: #000
+}
+.site-name {
+  font-size: 2rem;
+  letter-spacing: 1rem;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 3px solid #4A708B;
+  margin-bottom: 3rem
+}
+.main-tool-bar {
+  text-align: center;
+}
+.main {
+  padding: 1rem;
+  width: 100%;
+  padding-top: 3rem
+}
+.page-bar {
+  text-align: right;
+  padding: 3px;
+  padding-right: 5px;
+  padding-bottom: 1rem
+}
+.page-number {
+  color: orange
+}
+.current-page {
+  color: red;
+  font-weight: bold;
+}
+.foot {
+  text-align: center;
+  color: silver;
+  border-top: 1px solid silver;
+  margin-top: 3rem
+}
+.thumbnail-img {
+  width:300px;
+  height: 200px
+}
+.weibo-content {
+  height: 70px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .weibo-content {
+    height: 100%
+  }
+}
+.glyphicon {
+  color: lightgreen
+}

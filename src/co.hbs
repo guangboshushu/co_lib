@@ -1,0 +1,205 @@
+{{css '/css/co.css'}}
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-8 column">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>目标客户详情
+          <hr />
+        </div>
+        <div>
+          <div style="text-align:right;padding-right: 4rem">
+            {{#checkTarget data.isTarget}}
+            当前状态： 非目标客户
+             <button class="btn btn-xs btn-info" onclick="targetMake({{data.id}})">设为目标客户</button>
+             {{else}}当前状态： 目标客户
+             <button class="btn btn-xs btn-danger" onclick="targetMake({{data.id}})">取消目标客户</button>
+             {{/checkTarget}}
+
+          </div>
+          <center>
+            {{#if data.sorceData.ReturnData.ExhibitorLogoURL}}
+              <img src="{{data.sorceData.ReturnData.ExhibitorLogoURL}}" class="co-logo">
+            {{/if}}
+          </center>
+        </div>
+        <div class="co-name">
+          {{data.nameCN}}
+        </div>
+
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i><span>公司名称：</span>
+        </div>
+        <div class="col-md-10">
+          {{data.nameCN}}
+        </div>
+      </div>
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>公司地址：
+        </div>
+        <div class="col-md-10">
+          {{data.address}}
+        </div>
+      </div>
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>邮政编码：
+        </div>
+        <div class="col-md-10">
+          {{data.zipcode}}
+        </div>
+      </div>
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>公司电话：
+        </div>
+        <div class="col-md-10">
+          {{data.phone}}
+        </div>
+      </div>
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>公司邮件：
+        </div>
+        <div class="col-md-10">
+          {{data.email}}
+        </div>
+      </div>
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>公司网址：
+        </div>
+        <div class="col-md-10">
+          {{data.website}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>公司特点 ：
+        </div>
+        <div class="col-md-10">
+          {{data.keyword}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>企业规模 ：
+        </div>
+        <div class="col-md-10">
+          {{data.staffs}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>注册资金 ：
+        </div>
+        <div class="col-md-10">
+          {{data.exhFund}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>企业规模 ：
+        </div>
+        <div class="col-md-10">
+          {{data.exhFund}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>企业属性 ：
+        </div>
+        <div class="col-md-10">
+          {{data.compType}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-2 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>企业概况 ：
+        </div>
+        <div class="col-md-10 introduce">
+          {{data.introduce}}
+        </div>
+      </div>
+
+      <div class="row row-content">
+        <div class="col-md-12 item-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>产品信息
+        </div>
+      </div>
+      {{#if data.sorceData.ReturnData.ProductList}}
+
+        <div class="row row-content">
+          {{#each data.sorceData.ReturnData.ProductList}}
+            <div class="col-md-4 p-box">
+              <div class="p-box-in">
+                <img src="{{PRODUCTURL}}" class="p-pic" />
+              </div>
+              <div class="p-box-in">
+                {{PRODUCTNAME}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+
+      {{/if}}
+
+    </div>
+    <div class="col-md-4 column">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <i class="glyphicon glyphicon-circle-arrow-right"></i>历史联系备注
+          <hr />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <input type="hidden" name="id" value="{{data.id}}" />
+          <textarea class="rem" id="rem"></textarea>
+          <p class="rem-btn"><button type="button" class="btn btn-primary block" id="remBtn"> 提交保存</button></p>
+
+        </div>
+      </div>
+      <div>
+        <h5><strong>历史记录 --- </strong></h5>
+      </div>
+      {{#if data.rem}}
+        {{#each data.rem}}
+          <div class="rem-box">
+            <div class="row">
+              <div class="col-md-2">
+                备注
+              </div>
+              <div class="col-md-10">
+                {{rem}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                时间
+              </div>
+              <div class="col-md-10">
+                {{regtime}}
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{/if}}
+
+    </div>
+  </div>
+
+</div>
+{{js '/js/co.js'}}
