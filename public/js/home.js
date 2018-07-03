@@ -17,5 +17,10 @@ $('#Go').click(function() {
 })
 
 const goCo = (id) => {
-  window.open('/co?id=' + id)
+
 }
+
+$('.detail').click(function() {
+  let index = $(this).attr('index')
+  window.open('/co?id=' + index)
+})
